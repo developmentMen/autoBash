@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ $# == 0 ] || [ $1 == '-h' ] || [ $1 == '--help' ]
+then
+	echo "este archivo da permiso de ejecucion (chmod +x) a todos los scripts (menos README.md)"
+fi
+
+for e in $(ls)
+do
+	chmod +x $e
+done
+
+chmod -x README.md

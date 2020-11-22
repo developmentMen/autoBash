@@ -1,5 +1,39 @@
 #!/bin/bash
-sudo fuser -vki $1
-sudo rm -f $1
-sudo dpkg --configure -a
-sudo apt autoremove
+
+youAreRoot() {
+        if [ $(id -u) != 0 ]
+        then
+		echo '-------------------------------------'
+                echo '|este programa necesita usuario root|'
+		echo '-------------------------------------'
+                return 1
+        else
+                return 0
+        fi
+}
+
+youAreRoot
+
+if [ $? == 0 ]
+then
+        fuser -vki $1
+        rm -f $1
+        dpkg --configure -a
+        apt autoremove
+fi
+
+
+if [ $# == 0 ] || [ $1 == '-h' ] || [ $1 == '--help']
+then
+        echo "uso:   ./bloq  [nombre del proceso]"
+        echo '  (solo un proceso)'
+	echo ' Elimina procesos que interrumpen o impiden la actualizacion del sistema '
+	echo ' '
+fi
+
+echo 'ejecutar apt update? [y/n]'
+read eleccion
+if [ $eleccion == 'y' ] || [ $eleccion == 'Y' ]
+then
+	apt update
+fi
