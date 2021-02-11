@@ -1,0 +1,18 @@
+num=$((1 + RANDOM % 5))
+printf "\e[33m"
+if [ $num == 1 ]
+then
+	figlet  -f /home/debian/Documentos/figlet-fonts/Sub-Zero.flf " Bash Sweet Bash"
+elif [ $num == 2 ]
+then
+	figlet  -f /home/debian/Documentos/figlet-fonts/Bloody.flf " DevMen"
+elif [ $num == 3 ]
+then
+        figlet  -f /home/debian/Documentos/figlet-fonts/sblood.flf " Stay hacking"
+elif [ $num == 4 ]
+then
+        figlet  -f /home/debian/Documentos/figlet-fonts/fire_font-s.flf " Estamos adentro"
+else
+        figlet  -f /home/debian/Documentos/figlet-fonts/Slant.flf " Despierta Neo"
+fi
+
